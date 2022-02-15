@@ -1,4 +1,4 @@
-package com.example.usershilt.models
+package com.example.usershilt.networks.models
 
 data class UserModel(
     val address: Address,

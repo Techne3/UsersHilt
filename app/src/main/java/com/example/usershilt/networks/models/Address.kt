@@ -1,4 +1,4 @@
-package com.example.usershilt.models
+package com.example.usershilt.networks.models
 
 //import com.squareup.moshi.JsonClass
 //
