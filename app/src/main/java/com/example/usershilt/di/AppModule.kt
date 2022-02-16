@@ -1,6 +1,6 @@
 package com.example.usershilt.di
 
-import com.example.usershilt.networks.service.UsersService
+import com.example.usershilt.networks.service.UserService
 import com.example.usershilt.utils.BASE_URL
 import com.example.usershilt.utils.TIMEOUT
 import com.squareup.moshi.Moshi
@@ -8,7 +8,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,7 +22,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesMoshi() = Moshi.Builder().build()
+    fun providesMoshi(): Moshi = Moshi.Builder().build()
 
     @Singleton
     @Provides
@@ -51,8 +50,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesWeatherService(retrofit: Retrofit): UsersService {
-        return retrofit.create(UsersService::class.java)
+    fun providesUserService(retrofit: Retrofit): UserService {
+        return retrofit.create(UserService::class.java)
 
     }
 
