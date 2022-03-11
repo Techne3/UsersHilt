@@ -13,17 +13,16 @@ class UserRepository @Inject constructor(
     private val userService: UserService
 ) {
 
-    suspend fun getAllUsers(): Resource<List<UserModel>> {
+    suspend fun getAllUsers():Resource<List<UserModel>> {
         return try {
             val response = userService.getUsers()
             if (response.isSuccessful && response.body() != null) {
                 Resource.Success(response.body()!!)
             } else {
-                Resource.Error("Failed to get All Users.")
+                Resource.Error("Failed to get Users.")
             }
         } catch (ex: Exception) {
             Resource.Error("unexpected error")
         }
     }
-
 }

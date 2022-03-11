@@ -1,5 +1,9 @@
 package com.example.usershilt.networks.models
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+
 data class UserModel(
     val address: Address,
     val company: Company,

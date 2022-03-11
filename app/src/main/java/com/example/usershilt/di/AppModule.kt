@@ -1,5 +1,6 @@
 package com.example.usershilt.di
 
+import com.example.usershilt.networks.repository.UserRepository
 import com.example.usershilt.networks.service.UserService
 import com.example.usershilt.utils.BASE_URL
 import com.example.usershilt.utils.TIMEOUT
@@ -22,7 +23,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesMoshi(): Moshi = Moshi.Builder().build()
+    fun providesMoshi() = Moshi.Builder().build()
 
     @Singleton
     @Provides
@@ -54,5 +55,11 @@ object AppModule {
         return retrofit.create(UserService::class.java)
 
     }
+
+    @Provides
+    @Singleton
+   fun  providesUserRepository(userService:UserService):UserRepository{
+       return UserRepository(userService)
+   }
 
 }

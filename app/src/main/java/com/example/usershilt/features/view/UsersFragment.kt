@@ -16,9 +16,11 @@ import com.example.usershilt.features.viewModel.UserViewModel
 import com.example.usershilt.networks.models.UserModel
 import com.example.usershilt.utils.Resource
 import com.example.usershilt.utils.showToast
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class UsersFragment : Fragment() {
-
 
     private var _binding: UsersListBinding? = null
     private val binding: UsersListBinding get() = _binding!!
@@ -57,6 +59,7 @@ class UsersFragment : Fragment() {
 
 
             viewModel.users.observe(viewLifecycleOwner) { response ->
+                updateUi(response is Resource.Loading)
                 when (response) {
                     is Resource.Loading -> {
                         progressBar.isVisible = true
@@ -75,6 +78,10 @@ class UsersFragment : Fragment() {
 
             }
         }
+    }
+
+    private fun updateUi(isLoading: Boolean) {
+        binding.progressBar.isVisible = isLoading
     }
 
     override fun onDestroyView() {

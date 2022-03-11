@@ -1,7 +1,9 @@
 package com.example.usershilt.networks.models
 
+import com.squareup.moshi.JsonClass
 
-//@JsonClass(generateAdapter = true)
+
+@JsonClass(generateAdapter = true)
 
 
 data class Company(
